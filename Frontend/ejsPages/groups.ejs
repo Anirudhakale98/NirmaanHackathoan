@@ -1,0 +1,81 @@
+<<%- include("layouts/boilerplate") %>
+
+
+<style>
+    .group-card {
+        display: flex;
+        align-items: center;
+        background: #fff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        margin: 10px 0;
+        transition: transform 0.3s ease;
+    }
+    
+    .group-card:hover {
+        transform: scale(1.02);
+    }
+    
+    .group-card img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 15px;
+    }
+    
+    .group-info {
+        flex: 1;
+    }
+    
+    .group-info h5 {
+        margin: 0;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    
+    .group-info p {
+        margin: 5px 0;
+        font-size: 14px;
+        color: #666;
+    }
+    
+    .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+    }
+    
+    .tag {
+        background: #e1251b;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 12px;
+    }
+</style>
+
+<div class="container mt-4">
+    <h2 class="text-center">Explore Groups</h2>
+    <div class="row">
+        <% for(let group of groups) { %>
+            <div class="col-12">
+                <div class="group-card">
+                    <img src="<%= group.image.url %>" alt="Group Image">
+                    <div class="group-info">
+                        <h5><a href="/group/<%= group._id %>" class="text-dark text-decoration-none"><%= group.name %></a></h5>
+                        <p><%= group.description %></p>
+                        <p><b>Created At:</b> <%= new Date(group.createdAt).toLocaleDateString() %></p>
+                        <p><b>Participants:</b> <%= group.participants.length %></p>
+                        <div class="tags">
+                            <% group.tags.forEach(tag => { %>
+                                <span class="tag"><%= tag %></span>
+                            <% }) %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <% } %>
+    </div>
+</div>

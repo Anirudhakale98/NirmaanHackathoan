@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SmartCamp - Events</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <header>
+        <h1>SmartCamp</h1>
+        <nav>
+            <a href="#">Events</a>
+            <a href="#">Groups</a>
+            <div class="profile">Elvish Yadav</div>
+        </nav>
+    </header>
+
+    <main>
+        <h2>Events At the Campus</h2>
+        <div class="events-container">
+            <% events.forEach(event => { %>
+                <div class="event-card">
+                    <img src="<%= event.image %>" alt="<%= event.name %>">
+                    <p><%= event.participants %> users participated 👥</p>
+                </div>
+            <% }); %>
+        </div>
+    </main>
+</body>
+</html>
